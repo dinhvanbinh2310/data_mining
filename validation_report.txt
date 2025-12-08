@@ -1,0 +1,71 @@
+# Validation Report - Đồ án Khai thác Dữ liệu
+# Generated: 2024
+
+## ✅ Cấu trúc Thư mục
+
+- [x] data/raw/ - Thư mục chứa dữ liệu thô
+- [x] data/processed/ - Thư mục chứa dữ liệu đã xử lý
+- [x] src/preprocess/ - Module tiền xử lý
+- [x] src/models/ - Module mô hình ML
+- [x] src/evaluation/ - Module đánh giá
+- [x] src/utils/ - Utility functions
+- [x] src/main.ipynb - Notebook chính
+- [x] report/draft/ - Báo cáo nháp
+- [x] report/final/ - Báo cáo cuối
+- [x] slides/ - Slides thuyết trình
+- [x] environment/ - Cài đặt môi trường
+- [x] README.md - Hướng dẫn project
+
+## ✅ Source Code Files
+
+### Preprocessing
+- [x] src/preprocess/preprocessing.py - DataPreprocessor class
+- [x] src/preprocess/__init__.py
+
+### Models
+- [x] src/models/train_model.py - ModelTrainer class
+- [x] src/models/predict_model.py - Prediction functions
+- [x] src/models/__init__.py
+
+### Evaluation
+- [x] src/evaluation/evaluate.py - ModelEvaluator class
+- [x] src/evaluation/__init__.py
+
+### Utils
+- [x] src/utils/descriptive_stats.py - Thống kê mô tả
+- [x] src/utils/__init__.py
+
+### Main Workflow
+- [x] src/main.ipynb - End-to-end pipeline
+
+## ✅ Environment Setup
+
+- [x] environment/requirements.txt - Dependencies
+- [x] environment/install.md - Hướng dẫn cài đặt
+
+## ⚠️ Cần Thực hiện
+
+1. **Dataset**: Đặt file dataset vào `data/raw/` (>= 5 cột, >= 500 dòng)
+2. **Chạy Pipeline**: Mở `src/main.ipynb` và chạy các cell
+3. **Điều chỉnh**: 
+   - Sửa `data_path` trong notebook
+   - Sửa `target_column` theo dataset
+   - Điều chỉnh hyperparameters nếu cần
+4. **Báo cáo PDF**: Tạo báo cáo PDF vào `report/final/` (có thể dùng markdown → PDF)
+5. **Slides**: Tạo slides vào `slides/`
+
+## 📝 Ghi chú
+
+- Code đã được cấu trúc theo rule trong `.cursorrules`
+- Tất cả modules đều có docstrings và comments
+- Pipeline end-to-end từ load data đến evaluation
+- Hỗ trợ cả classification và regression
+- Có thể mở rộng thêm clustering nếu cần
+
+## 🚀 Next Steps
+
+1. Đặt dataset vào `data/raw/`
+2. Cài đặt dependencies: `pip install -r environment/requirements.txt`
+3. Mở `src/main.ipynb` và chạy pipeline
+4. Xem kết quả tại `src/evaluation/` và `report/`
+

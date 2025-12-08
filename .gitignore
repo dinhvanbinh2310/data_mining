@@ -1,0 +1,112 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Data files (giữ raw, ignore processed nếu quá lớn)
+data/processed/*
+!data/processed/.gitkeep
+# Uncomment nếu muốn ignore cả raw data (không khuyến nghị)
+# data/raw/*
+# !data/raw/.gitkeep
+
+# Model files (có thể ignore nếu quá lớn)
+src/models/*.joblib
+src/models/*.pkl
+src/models/*.h5
+src/models/*.pth
+!src/models/__init__.py
+
+# Model metadata
+src/models/*_metadata.json
+
+# Evaluation outputs
+src/evaluation/*.png
+src/evaluation/*.jpg
+src/evaluation/*.json
+!src/evaluation/__init__.py
+
+# Report files (giữ final, ignore draft)
+report/draft/*
+!report/draft/.gitkeep
+# Uncomment nếu muốn ignore cả final reports
+# report/final/*
+# !report/final/.gitkeep
+
+# Slides
+slides/*.pptx
+slides/*.pdf
+!slides/.gitkeep
+
+# Statistics
+src/utils/descriptive_stats.csv
+report/descriptive_stats.md
+report/evaluation.md
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Environment variables
+.env
+.env.local
+
+# Validation report (có thể ignore nếu auto-generated)
+# validation_report.txt
+

@@ -1,0 +1,69 @@
+# Cursor Rule — Đồ án Khai thác Dữ liệu
+# (Bản dành cho file .cursorrule: ngắn gọn, chỉ gồm hành động)
+
+# 1. CẤU TRÚC THƯ MỤC (bắt buộc)
+project/
+  data/raw/
+  data/processed/
+  src/preprocess/
+  src/models/
+  src/evaluation/
+  src/utils/
+  src/main.ipynb
+  report/draft/
+  report/final/
+  slides/
+  environment/install.md
+  environment/requirements.txt
+  README.md
+
+# 2. KIỂM TRA DATASET
+- Dataset phải có >= 5 cột và >= 500 dòng.
+- Phải có thông tin nguồn dữ liệu.
+- Tạo thống kê mô tả tự động (min, max, mean, median, distribution, frequency, missing rate).
+- Lưu thống kê vào report/descriptive_stats.md và/hoặc src/utils/descriptive_stats.csv.
+
+# 3. TIỀN XỬ LÝ
+- Xử lý thiếu: mean / median / most_frequent / interpolation.
+- Xử lý outlier: IQR hoặc Z-score.
+- Encoding: OneHot hoặc Label/Ordinal.
+- Scaling: StandardScaler hoặc MinMaxScaler.
+- Chia train/test (80/20, stratify nếu classification).
+- Lưu dữ liệu đã xử lý vào data/processed/.
+- Ghi mô tả lý do chọn kỹ thuật vào báo cáo.
+
+# 4. MÔ HÌNH (2 mô hình khác loại)
+- Tạo Model A + Model B (khác thuật toán).
+- Tuning hyperparameters cơ bản (GridSearchCV hoặc RandomizedSearchCV).
+- Lưu mô hình (.pkl hoặc .joblib) + metadata vào src/models/.
+- Tạo file train_*.py và predict_*.py.
+
+# 5. ĐÁNH GIÁ
+- Classification: Accuracy, Precision, Recall, F1, Confusion Matrix.
+- Regression: RMSE, MAE, MAPE, R2.
+- Clustering: Silhouette, Davies–Bouldin.
+- Lưu kết quả + hình ảnh vào src/evaluation/.
+- Tạo report/evaluation.md (giải thích metric + so sánh models).
+
+# 6. BÁO CÁO PDF
+- Sinh report PDF đầy đủ vào report/final/.
+- Nội dung gồm: giới thiệu, mô tả dữ liệu, tiền xử lý, mô hình, kết quả, kết luận.
+
+# 7. SLIDES
+- Tạo slides tóm tắt vào slides/.
+
+# 8. DEMO APP (tuỳ chọn nâng cao)
+- Streamlit/Gradio/Flask: upload input → predict → hiển thị kết quả.
+- Lưu source tại src/app/.
+
+# 9. QUY TẮC TRẢ LỜI
+- Luôn tạo file đúng nơi.
+- Luôn trả lời ngắn, kỹ thuật.
+- Không tự sinh dữ liệu nếu không được yêu cầu.
+- Code phải end-to-end.
+
+# 10. CHECK CUỐI
+- Kiểm tra đủ folder.
+- Kiểm tra dataset hợp lệ.
+- Smoke test chạy training nhanh.
+- Sinh project/validation_report.txt.
