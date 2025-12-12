@@ -221,10 +221,20 @@ def predict_score(model, preprocessor, X):
         else:
             X_processed = X
         
-        prediction = model.predict(X_processed)[0]
-        return max(0, min(20, round(prediction, 2)))  # Giới hạn trong [0, 20]
+        prediction_raw = model.predict(X_processed)[0]
+        
+        # Debug: hiển thị prediction raw (chỉ trong development)
+        if st.session_state.get('debug_mode', False):
+            st.write(f"🔍 Debug - Prediction raw: {prediction_raw:.4f}")
+            st.write(f"🔍 Debug - X shape: {X.shape}, X_processed shape: {X_processed.shape}")
+            st.write(f"🔍 Debug - X columns: {list(X.columns)}")
+        
+        prediction = max(0, min(20, round(prediction_raw, 2)))  # Giới hạn trong [0, 20]
+        return prediction
     except Exception as e:
         st.error(f"Lỗi khi dự đoán: {e}")
+        import traceback
+        st.error(f"Chi tiết lỗi: {traceback.format_exc()}")
         return None
 
 
@@ -260,6 +270,10 @@ def main():
         list(models.keys())
     )
     
+    # Debug mode
+    debug_mode = st.sidebar.checkbox("🔍 Debug Mode", value=False, help="Hiển thị thông tin debug khi predict")
+    st.session_state['debug_mode'] = debug_mode
+    
     # Hiển thị thông tin model
     if models[selected_model]['metadata']:
         metadata = models[selected_model]['metadata']
@@ -270,6 +284,13 @@ def main():
             st.sidebar.write("**Hyperparameters:**")
             for key, value in metadata['best_params'].items():
                 st.sidebar.write(f"  - {key}: {value}")
+        
+        # Hiển thị R2 score nếu có
+        if 'training_history' in metadata and 'best_score' in metadata['training_history']:
+            r2_score = metadata['training_history']['best_score']
+            st.sidebar.write(f"**R² Score**: {r2_score:.4f}")
+            if r2_score < 0.3:
+                st.sidebar.warning("⚠️ Model performance thấp (R² < 0.3). Predictions có thể không chính xác.")
     
     # Form nhập liệu
     X = create_input_form()

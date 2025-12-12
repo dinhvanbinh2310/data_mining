@@ -1,16 +1,14 @@
-[server]
-headless = true
-port = 8501
-enableCORS = false
-enableXsrfProtection = true
-
-[browser]
-gatherUsageStats = false
-
 [theme]
-primaryColor = "#1f77b4"
-backgroundColor = "#ffffff"
-secondaryBackgroundColor = "#f0f2f6"
+primaryColor = "#FF4B4B"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F0F2F6"
 textColor = "#262730"
 font = "sans serif"
 
+[theme.sidebar]
+widgetBackgroundColor = "#F0F2F6"
+widgetBorderColor = "#E0E0E0"
+skeletonBackgroundColor = "#E0E0E0"
+
+[server]
+headless = true
