@@ -289,25 +289,6 @@ def main():
         if 'training_history' in metadata and 'best_score' in metadata['training_history']:
             r2_score = metadata['training_history']['best_score']
             st.sidebar.write(f"**R² Score (CV)**: {r2_score:.4f}")
-            
-            # Hiển thị cảnh báo với giải thích
-            if r2_score < 0.3:
-                st.sidebar.warning("""
-                ⚠️ **Model performance thấp (R² < 0.3)**
-                
-                **Nguyên nhân:**
-                - ✅ Dataset KHÔNG phải dữ liệu rác (từ UCI ML Repository - dataset chuẩn)
-                - ❌ Đã loại bỏ G1, G2 (điểm kỳ 1, kỳ 2) để tránh data leakage
-                - 📉 G1, G2 là features quan trọng nhất (tương quan mạnh với G3)
-                - 🎯 Model chỉ dựa vào 30 features khác (thông tin cá nhân, gia đình, học tập)
-                - 📊 Dataset nhỏ (649 samples)
-                
-                **Giải thích:**
-                Nếu dùng G1, G2 → R² có thể >0.8, nhưng đây là "cheating" 
-                (dùng điểm kỳ trước để đoán điểm cuối kỳ).
-                
-                **Lưu ý:** Predictions chỉ mang tính tham khảo.
-                """)
     
     # Form nhập liệu
     X = create_input_form()
