@@ -295,10 +295,16 @@ def main():
                 st.sidebar.warning("""
                 ⚠️ **Model performance thấp (R² < 0.3)**
                 
-                **Lý do:**
-                - Dataset đã loại bỏ G1, G2 để tránh data leakage
-                - Model chỉ dựa vào 30 features khác (không có điểm kỳ trước)
-                - Dataset nhỏ (649 samples)
+                **Nguyên nhân:**
+                - ✅ Dataset KHÔNG phải dữ liệu rác (từ UCI ML Repository - dataset chuẩn)
+                - ❌ Đã loại bỏ G1, G2 (điểm kỳ 1, kỳ 2) để tránh data leakage
+                - 📉 G1, G2 là features quan trọng nhất (tương quan mạnh với G3)
+                - 🎯 Model chỉ dựa vào 30 features khác (thông tin cá nhân, gia đình, học tập)
+                - 📊 Dataset nhỏ (649 samples)
+                
+                **Giải thích:**
+                Nếu dùng G1, G2 → R² có thể >0.8, nhưng đây là "cheating" 
+                (dùng điểm kỳ trước để đoán điểm cuối kỳ).
                 
                 **Lưu ý:** Predictions chỉ mang tính tham khảo.
                 """)
