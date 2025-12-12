@@ -288,9 +288,20 @@ def main():
         # Hiển thị R2 score nếu có
         if 'training_history' in metadata and 'best_score' in metadata['training_history']:
             r2_score = metadata['training_history']['best_score']
-            st.sidebar.write(f"**R² Score**: {r2_score:.4f}")
+            st.sidebar.write(f"**R² Score (CV)**: {r2_score:.4f}")
+            
+            # Hiển thị cảnh báo với giải thích
             if r2_score < 0.3:
-                st.sidebar.warning("⚠️ Model performance thấp (R² < 0.3). Predictions có thể không chính xác.")
+                st.sidebar.warning("""
+                ⚠️ **Model performance thấp (R² < 0.3)**
+                
+                **Lý do:**
+                - Dataset đã loại bỏ G1, G2 để tránh data leakage
+                - Model chỉ dựa vào 30 features khác (không có điểm kỳ trước)
+                - Dataset nhỏ (649 samples)
+                
+                **Lưu ý:** Predictions chỉ mang tính tham khảo.
+                """)
     
     # Form nhập liệu
     X = create_input_form()
